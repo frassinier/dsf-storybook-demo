@@ -1,5 +1,5 @@
 section {
-  font-family: 'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-family: "Nunito Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 14px;
   line-height: 24px;
   padding: 48px 20px;
@@ -19,11 +19,6 @@ h2 {
 
 p {
   margin: 1em 0;
-}
-
-a {
-  text-decoration: none;
-  color: #1ea7fd;
 }
 
 ul {

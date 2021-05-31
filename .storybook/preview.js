@@ -1,4 +1,4 @@
-import { ThemeProvider } from "@talend/design-system";
+import { IconsProvider, ThemeProvider } from "@talend/design-system";
 
 export const parameters = {
   actions: { argTypesRegex: "^on[A-Z].*" },
@@ -13,10 +13,15 @@ export const parameters = {
 export const decorators = [
   (Story, context) => {
     return (
-      <ThemeProvider>
-        <ThemeProvider.GlobalStyle />
-        <Story {...context} />
-      </ThemeProvider>
+      <>
+        <IconsProvider
+          bundles={["https://unpkg.com/@talend/icons/dist/svg-bundle/all.svg"]}
+        />
+        <ThemeProvider>
+          <ThemeProvider.GlobalStyle />
+          <Story {...context} />
+        </ThemeProvider>
+      </>
     );
   },
 ];
