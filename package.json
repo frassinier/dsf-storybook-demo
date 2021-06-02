@@ -24,7 +24,8 @@
     "chromatic": "^5.8.3"
   },
   "scripts": {
-    "storybook": "start-storybook -p 6006",
+    "storybook": "start-storybook -p 6789",
+    "start": "yarn storybook --docs",
     "build-storybook": "build-storybook"
   }
 }

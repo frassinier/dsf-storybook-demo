@@ -1,8 +1,9 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Link } from "@talend/design-system";
+import { Button, Link } from "@talend/design-system";
 
 import { Header } from "./Header";
+import { Hero } from "./Hero";
 import "./page.css";
 
 export const Page = ({ user, onLogin, onLogout, onCreateAccount }) => (
@@ -13,7 +14,16 @@ export const Page = ({ user, onLogin, onLogout, onCreateAccount }) => (
       onLogout={onLogout}
       onCreateAccount={onCreateAccount}
     />
-
+    <Hero>
+      <h1>Connect your data in the cloud</h1>
+      <p>
+        Need superior analytics for important decisions? Talend brings it all
+        together with support for any cloud data warehouse.
+      </p>
+      <Link as={Button.Primary} href="#">
+        Contact us
+      </Link>
+    </Hero>
     <section>
       <h2>Pages in Storybook</h2>
       <p>
