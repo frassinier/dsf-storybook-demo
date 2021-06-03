@@ -6,7 +6,7 @@
   "author": "Fabien Rassinier <frassinier@talend.com>",
   "license": "MIT",
   "dependencies": {
-    "@talend/design-system": "^1.2.1",
+    "@talend/design-system": "^1.2.2",
     "classnames": "^2.3.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
@@ -21,7 +21,8 @@
     "@storybook/addon-links": "^6.2.9",
     "@storybook/react": "^6.2.9",
     "babel-loader": "^8.2.2",
-    "chromatic": "^5.8.3"
+    "chromatic": "^5.8.3",
+    "storybook-addon-designs": "^6.0.0"
   },
   "scripts": {
     "storybook": "start-storybook -p 6789",
