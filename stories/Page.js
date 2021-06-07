@@ -1,6 +1,5 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Link } from "@talend/design-system";
 
 import { Header } from "./Header";
 import "./page.css";
@@ -17,9 +16,13 @@ export const Page = ({ user, onLogin, onLogout, onCreateAccount }) => (
       <h2>Pages in Storybook</h2>
       <p>
         We recommend building UIs with a{" "}
-        <Link href="https://componentdriven.org" target="_blank">
+        <a
+          href="https://componentdriven.org"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           <strong>component-driven</strong>
-        </Link>{" "}
+        </a>{" "}
         process starting with atomic components and ending with pages.
       </p>
       <p>
@@ -39,13 +42,21 @@ export const Page = ({ user, onLogin, onLogout, onCreateAccount }) => (
       </ul>
       <p>
         Get a guided tutorial on component-driven development at{" "}
-        <Link href="https://storybook.js.org/tutorials/" target="_blank">
+        <a
+          href="https://storybook.js.org/tutorials/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           Storybook tutorials
-        </Link>
+        </a>
         . Read more in the{" "}
-        <Link href="https://storybook.js.org/docs" target="_blank">
+        <a
+          href="https://storybook.js.org/docs"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           docs
-        </Link>
+        </a>
         .
       </p>
       <div className="tip-wrapper">
