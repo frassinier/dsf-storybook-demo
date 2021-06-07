@@ -1,0 +1,97 @@
+import { ArgsTable, Canvas, Meta, Story } from "@storybook/addon-docs/blocks";
+import { IFrame } from "storybook-addon-designs/blocks";
+
+import { Button } from "@talend/design-system";
+import { Hero } from "./Hero";
+
+import * as Stories from "./Hero.storybook";
+
+import image from "./assets/talend.svg";
+
+<Meta title="Example/Hero" />
+
+# Hero
+
+A large banner, usually appearing as one of the first items on a page; often contains a full-width image.
+
+## Zoning
+
+<IFrame url="https://www.figma.com/file/16DCGEgU1U6DArqH98I0Kv/DSF-x-Talend?node-id=81%3A1" />
+
+## Style
+
+### Default
+
+<Canvas>
+  <Story story={Stories.Default} />
+</Canvas>
+
+### With image
+
+<Canvas>
+  <Story story={Stories.HeroWithImage} />
+</Canvas>
+
+## States
+
+N/A
+
+## Interactions
+
+N/A
+
+## Content
+
+- Don’t just repeat the site title in the header.
+- Use a compelling header that is in-brand and relevant to your most important content/action item.
+- Have a clear call to action.
+- We recommend hero images at least 800px by 600px. A 16:9 aspect ratio works well though more of it can be hidden when the hero section is tall. Plan for this and choose your image wisely.
+- Choose your image wisely.
+
+## Usage
+
+<Canvas>
+  <Story
+    name="Usage"
+    argTypes={{
+      hasFreeTrialCTA: {
+        description: "Should display the `Free Trial` CTA",
+        control: { type: "boolean" },
+        table: {
+          type: { summary: "boolean" },
+        },
+      },
+      image: {
+        description: `<dl><dt>Image URL to display</dt><dd>${image}</dd><dd>https://media.giphy.com/media/TLqkzhMIZxAQg/giphy.gif</dd></dl>`,
+        control: { type: "text" },
+        table: {
+          type: { summary: "url" },
+        },
+      },
+    }}
+  >
+    {(args) => (
+      <Hero {...args}>
+        <h1>Connect your data in the cloud</h1>
+        <p>
+          Need superior analytics for important decisions? Talend brings it all
+          together with support for any cloud data warehouse.
+        </p>
+        {!!args.hasFreeTrialCTA && (
+          <Button.Secondary as="a" href="#">
+            Free Trial
+          </Button.Secondary>
+        )}
+        <Button.Primary as="a" href="#">
+          Contact us
+        </Button.Primary>
+      </Hero>
+    )}
+  </Story>
+</Canvas>
+
+<ArgsTable story="Usage" />
+
+## Accessibility
+
+N/A
