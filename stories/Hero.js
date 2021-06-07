@@ -10,7 +10,7 @@ const Container = styled.div`
   min-height: 40rem;
   padding: ${tokens.space.xl} 0;
   color: ${tokens.colors.gray0};
-  background: linear-gradient(135deg, #91d1ed -1.47%, #19426c 101.64%);
+  background: linear-gradient(315deg, #ffa7a9 4.29%, #bde6f6 93.86%);
   width: 100%;
 
   h1,
