@@ -10,10 +10,25 @@ export default {
   title: "Example/Hero",
   component: Hero,
   argTypes: {
-    hasFreeTrialCTA: {
-      name: "Free trial",
-      description: "Should display the `Free Trial` CTA",
-      control: { type: "boolean" },
+    title: {
+      name: "Title",
+      description: "Title of the bannner",
+      control: { type: "text" },
+    },
+    description: {
+      name: "Description",
+      description: "Description of the banner",
+      control: { type: "text" },
+    },
+    secondary: {
+      name: "Secondary",
+      description: "Should display a secondary CTA",
+      control: { type: "text" },
+    },
+    primary: {
+      name: "Primary",
+      description: "Should display a primary CTA",
+      control: { type: "text" },
     },
     image: {
       name: "Image",
@@ -28,26 +43,38 @@ export default {
 };
 */
 
-export const Template = (args) => (
-  <Hero {...args}>
-    <h1>Connect your data in the cloud</h1>
-    <p>
-      Need superior analytics for important decisions? Talend brings it all
-      together with support for any cloud data warehouse.
-    </p>
-    {!!args.hasFreeTrialCTA && (
+export const defaultProps = {
+  title: "Connect your data in the cloud",
+  description:
+    "Need superior analytics for important decisions? Talend brings it all together with support for any cloud data warehouse.",
+  primary: "Contact us",
+};
+
+export const Template = ({
+  title,
+  description,
+  secondary,
+  primary,
+  ...rest
+}) => (
+  <Hero {...rest}>
+    {title && <h1>{title}</h1>}
+    {description && <p>{description}</p>}
+    {secondary && (
       <Button.Secondary as="a" href="#">
-        Free Trial
+        {secondary}
       </Button.Secondary>
     )}
-    <Button.Primary as="a" href="#">
-      Contact us
-    </Button.Primary>
+    {primary && (
+      <Button.Primary as="a" href="#">
+        {primary}
+      </Button.Primary>
+    )}
   </Hero>
 );
 
 export const Default = Template.bind({});
-Default.args = {};
+Default.args = defaultProps;
 Default.parameters = {
   design: {
     type: "figma",
@@ -56,9 +83,9 @@ Default.parameters = {
   },
 };
 
-export const HeroWithImage = Template.bind({});
-HeroWithImage.args = { image, hasFreeTrialCTA: true };
-HeroWithImage.parameters = {
+export const WithImage = Template.bind({});
+WithImage.args = { ...defaultProps, secondary: "Free trial", image };
+WithImage.parameters = {
   design: {
     type: "figma",
     url:

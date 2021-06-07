@@ -30,7 +30,7 @@ A large banner, usually appearing as one of the first items on a page; often con
 ### With image
 
 <Canvas>
-  <Story story={Stories.HeroWithImage} />
+  <Story story={Stories.WithImage} />
 </Canvas>
 
 ## States
@@ -58,11 +58,27 @@ N/A
 <Canvas>
   <Story
     name="Usage"
+    args={Stories.Default.args}
     argTypes={{
-      hasFreeTrialCTA: {
-        name: "Free trial",
-        description: "Should display the `Free Trial` CTA",
-        control: { type: "boolean" },
+      title: {
+        name: "Title",
+        description: "Title of the bannner",
+        control: { type: "text" },
+      },
+      description: {
+        name: "Description",
+        description: "Description of the banner",
+        control: { type: "text" },
+      },
+      secondary: {
+        name: "Secondary",
+        description: "Should display a secondary CTA",
+        control: { type: "text" },
+      },
+      primary: {
+        name: "Primary",
+        description: "Should display a primary CTA",
+        control: { type: "text" },
       },
       image: {
         name: "Image",
