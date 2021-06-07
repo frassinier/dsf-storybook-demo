@@ -13,11 +13,6 @@ const Container = styled.div`
   background: linear-gradient(315deg, #ffa7a9 4.29%, #bde6f6 93.86%);
   width: 100%;
 
-  h1,
-  p {
-    color: white;
-  }
-
   h1 {
     line-height: 1;
     font-weight: normal;
