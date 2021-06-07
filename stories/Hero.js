@@ -9,9 +9,14 @@ const Container = styled.div`
   justify-content: center;
   min-height: 40rem;
   padding: ${tokens.space.xl} 0;
-  color: ${tokens.colors.gray900};
-  background: linear-gradient(135deg, #ffffff 1.23%, #f8f3ef 96.04%);
+  color: ${tokens.colors.gray0};
+  background: linear-gradient(135deg, #91d1ed -1.47%, #19426c 101.64%);
   width: 100%;
+
+  h1,
+  p {
+    color: white;
+  }
 
   h1 {
     line-height: 1;
