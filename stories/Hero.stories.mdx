@@ -1,14 +1,15 @@
 import { ArgsTable, Canvas, Meta, Story } from "@storybook/addon-docs/blocks";
-import { IFrame } from "storybook-addon-designs/blocks";
-
 import { Button } from "@talend/design-system";
+
+import { Content } from "./blocks";
+
 import { Hero } from "./Hero";
 
-import * as Stories from "./Hero.storybook";
+import * as Stories from "./Hero.stories";
 
 import image from "./assets/talend.svg";
 
-<Meta title="Example/Hero" />
+<Meta title="Example/Hero" component={Hero} />
 
 # Hero
 
@@ -16,7 +17,7 @@ A large banner, usually appearing as one of the first items on a page; often con
 
 ## Zoning
 
-<IFrame url="https://www.figma.com/file/16DCGEgU1U6DArqH98I0Kv/DSF-x-Talend?node-id=81%3A1" />
+<img src="https://s3-us-west-2.amazonaws.com/figma-alpha-api/img/9631/67c0/5ec7caec365196936f06fe9ac968024c" />
 
 ## Style
 
@@ -42,11 +43,15 @@ N/A
 
 ## Content
 
-- Don’t just repeat the site title in the header.
-- Use a compelling header that is in-brand and relevant to your most important content/action item.
-- Have a clear call to action.
-- We recommend hero images at least 800px by 600px. A 16:9 aspect ratio works well though more of it can be hidden when the hero section is tall. Plan for this and choose your image wisely.
-- Choose your image wisely.
+<Content
+  do={[
+    "Use a compelling header that is in-brand and relevant to your most important content/action item.",
+    "Have a clear call to action.",
+    "We recommend hero images at least 800px by 600px. A 16:9 aspect ratio works well though more of it can be hidden when the hero section is tall. Plan for this and choose your image wisely.",
+    "Choose your image wisely.",
+  ]}
+  dont={["Don’t just repeat the site title in the header"]}
+/>
 
 ## Usage
 
@@ -55,38 +60,22 @@ N/A
     name="Usage"
     argTypes={{
       hasFreeTrialCTA: {
+        name: "Free trial",
         description: "Should display the `Free Trial` CTA",
         control: { type: "boolean" },
-        table: {
-          type: { summary: "boolean" },
-        },
       },
       image: {
-        description: `<dl><dt>Image URL to display</dt><dd>${image}</dd><dd>https://media.giphy.com/media/TLqkzhMIZxAQg/giphy.gif</dd></dl>`,
+        name: "Image",
+        description: `Image URL to display
+          <ul>
+            <li>${image}</li>
+            <li>https://media.giphy.com/media/TLqkzhMIZxAQg/giphy.gif</li>
+          </ul>`,
         control: { type: "text" },
-        table: {
-          type: { summary: "url" },
-        },
       },
     }}
   >
-    {(args) => (
-      <Hero {...args}>
-        <h1>Connect your data in the cloud</h1>
-        <p>
-          Need superior analytics for important decisions? Talend brings it all
-          together with support for any cloud data warehouse.
-        </p>
-        {!!args.hasFreeTrialCTA && (
-          <Button.Secondary as="a" href="#">
-            Free Trial
-          </Button.Secondary>
-        )}
-        <Button.Primary as="a" href="#">
-          Contact us
-        </Button.Primary>
-      </Hero>
-    )}
+    {Stories.Template.bind({})}
   </Story>
 </Canvas>
 

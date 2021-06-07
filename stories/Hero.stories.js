@@ -11,18 +11,18 @@ export default {
   component: Hero,
   argTypes: {
     hasFreeTrialCTA: {
+      name: "Free trial",
       description: "Should display the `Free Trial` CTA",
       control: { type: "boolean" },
-      table: {
-        type: { summary: "boolean" },
-      },
     },
     image: {
-      description: `<dl><dt>Image URL to display</dt><dd>${image}</dd><dd>https://media.giphy.com/media/TLqkzhMIZxAQg/giphy.gif</dd></dl>`,
+      name: "Image",
+      description: `Image URL to display
+        <ul>
+          <li>${image}</li>
+          <li>https://media.giphy.com/media/TLqkzhMIZxAQg/giphy.gif</li>
+        </ul>`,
       control: { type: "text" },
-      table: {
-        type: { summary: "url" },
-      },
     },
   },
 };

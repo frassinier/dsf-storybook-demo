@@ -7,11 +7,10 @@ const Container = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  min-height: 40rem;
   padding: ${tokens.space.xl} 0;
-  color: ${tokens.colors.gray0};
-  background: linear-gradient(315deg, #ffa7a9 4.29%, #bde6f6 93.86%);
+  min-height: 40rem;
   width: 100%;
+  background: linear-gradient(315deg, #ffa7a9 4.29%, #bde6f6 93.86%);
 
   h1 {
     line-height: 1;
@@ -21,7 +20,7 @@ const Container = styled.div`
   }
 
   p {
-    margin-top: 0;
+    margin: 0;
     margin-bottom: ${tokens.space.xl};
   }
 
@@ -31,19 +30,16 @@ const Container = styled.div`
 `;
 
 const ContainerItem = styled.div`
-  padding: 0 ${tokens.space.xl};
   flex-basis: 50%;
+  padding: 0 ${tokens.space.xl};
 `;
 
-const Text = styled(ContainerItem)`
-  text-align: start;
-`;
+const Text = styled(ContainerItem)``;
 
 const Image = styled(ContainerItem)`
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0 ${tokens.space.xl};
 `;
 
 const ContainerWithImage = styled(Container)`
