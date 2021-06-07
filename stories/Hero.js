@@ -3,13 +3,25 @@ import styled from "styled-components";
 import { tokens } from "@talend/design-system";
 
 const Container = styled.div`
-  padding: ${tokens.space.xl};
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 40rem;
+  padding: ${tokens.space.xl} 0;
+  color: ${tokens.colors.gray900};
   width: 100%;
-  text-align: center;
 
   h1 {
+    line-height: 1;
     font-weight: normal;
     font-size: ${tokens.sizes.xxl};
+    margin-bottom: ${tokens.space.m};
+  }
+
+  p {
+    margin-top: 0;
+    margin-bottom: ${tokens.space.xl};
   }
 
   a + a {
@@ -18,6 +30,7 @@ const Container = styled.div`
 `;
 
 const ContainerItem = styled.div`
+  padding: 0 ${tokens.space.xl};
   flex-basis: 50%;
 `;
 
@@ -33,8 +46,7 @@ const Image = styled(ContainerItem)`
 `;
 
 const ContainerWithImage = styled(Container)`
-  display: flex;
-  align-items: center;
+  flex-direction: row;
 `;
 
 const Hero = (props) => {
