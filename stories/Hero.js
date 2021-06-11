@@ -1,40 +1,28 @@
+import React from "react";
 import styled from "styled-components";
 
 import { tokens } from "@talend/design-system";
 
-const Container = styled.div`
+const Container = styled.header`
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: ${tokens.space.xl} 0;
+  padding-block: ${tokens.space.xl};
   min-height: 40rem;
   width: 100%;
-  background: linear-gradient(315deg, #ffa7a9 4.29%, #bde6f6 93.86%);
-
-  h1 {
-    line-height: 1;
-    font-weight: normal;
-    font-size: ${tokens.sizes.xxl};
-    margin-bottom: ${tokens.space.m};
-  }
-
-  p {
-    margin: 0;
-    margin-bottom: ${tokens.space.xl};
-  }
-
-  a + a {
-    margin-left: ${tokens.space.m};
-  }
+  text-align: center;
+  background: ${tokens.colors.cottonCandy.backgroundImage};
 `;
 
 const ContainerItem = styled.div`
   flex-basis: 50%;
-  padding: 0 ${tokens.space.xl};
+  padding-inline: ${tokens.space.xl};
 `;
 
-const Text = styled(ContainerItem)``;
+const Text = styled(ContainerItem)`
+  text-align: start;
+`;
 
 const Image = styled(ContainerItem)`
   display: flex;
@@ -46,7 +34,7 @@ const ContainerWithImage = styled(Container)`
   flex-direction: row;
 `;
 
-const Hero = (props) => {
+export const Hero = (props) => {
   if (props.image) {
     const { image, children, ...rest } = props;
     return (
@@ -60,5 +48,3 @@ const Hero = (props) => {
   }
   return <Container {...props} />;
 };
-
-export { Hero };

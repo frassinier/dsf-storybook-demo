@@ -1,56 +1,49 @@
 import React from "react";
 
-import { Button } from "@talend/design-system";
+import { ButtonAsLink } from "./ButtonAsLink";
 import { Hero } from "./Hero";
 
 import image from "./assets/talend.svg";
 
-/*
-export default {
-  title: "Example/Hero",
-  component: Hero,
-  argTypes: {
-    title: {
-      name: "Title",
-      description: "Title of the bannner",
-      control: { type: "text" },
-    },
-    description: {
-      name: "Description",
-      description: "Description of the banner",
-      control: { type: "text" },
-    },
-    secondary: {
-      name: "Secondary",
-      description: "Should display a secondary CTA",
-      control: { type: "text" },
-    },
-    primary: {
-      name: "Primary",
-      description: "Should display a primary CTA",
-      control: { type: "text" },
-    },
-    image: {
-      name: "Image",
-      description: `Image URL to display
-        <ul>
-          <li>${image}</li>
-          <li>https://media.giphy.com/media/TLqkzhMIZxAQg/giphy.gif</li>
-        </ul>`,
-      control: { type: "text" },
-    },
+const argTypes = {
+  title: {
+    name: "Title",
+    description: "Title of the bannner",
+    control: { type: "text" },
+  },
+  description: {
+    name: "Description",
+    description: "Description of the banner",
+    control: { type: "text" },
+  },
+  secondary: {
+    name: "Secondary",
+    description: "Secondary CTA",
+    control: { type: "text" },
+  },
+  primary: {
+    name: "Primary",
+    description: "Primary CTA",
+    control: { type: "text" },
+  },
+  image: {
+    name: "Image",
+    description: `Image URL to display
+        <code>/${image}</code>
+        <code>//media.giphy.com/media/TLqkzhMIZxAQg/giphy.gif</code>
+        `,
+    control: { type: "text" },
   },
 };
-*/
 
-export const defaultProps = {
+const args = {
   title: "Connect your data in the cloud",
   description:
     "Need superior analytics for important decisions? Talend brings it all together with support for any cloud data warehouse.",
   primary: "Contact us",
 };
 
-export const Template = ({
+export const Default = ({
   title,
   description,
   secondary,
@@ -61,34 +54,57 @@ export const Template = ({
     {title && <h1>{title}</h1>}
     {description && <p>{description}</p>}
     {secondary && (
-      <Button.Secondary as="a" href="#">
+      <ButtonAsLink variant="secondary" href="#">
         {secondary}
-      </Button.Secondary>
+      </ButtonAsLink>
     )}
     {primary && (
-      <Button.Primary as="a" href="#">
+      <ButtonAsLink variant="primary" href="#">
         {primary}
-      </Button.Primary>
+      </ButtonAsLink>
     )}
   </Hero>
 );
-
-export const Default = Template.bind({});
-Default.args = defaultProps;
+Default.args = args;
 Default.parameters = {
+  docs: {
+    description: {
+      story: "By default, the content is centered.",
+    },
+  },
   design: {
     type: "figma",
     url:
-      "https://www.figma.com/file/16DCGEgU1U6DArqH98I0Kv/DSF-x-Talend?node-id=1%3A2",
+      "https://www.figma.com/file/16DCGEgU1U6DArqH98I0Kv/DSF-x-Talend?node-id=194%3A20",
   },
 };
+Default.argTypes = argTypes;
 
-export const WithImage = Template.bind({});
-WithImage.args = { ...defaultProps, secondary: "Free trial", image };
+export const WithImage = Default.bind({});
+WithImage.args = { ...args, secondary: "Free trial", image };
 WithImage.parameters = {
+  docs: {
+    description: {
+      story: "With an image the content is left aligned.",
+    },
+  },
   design: {
     type: "figma",
     url:
-      "https://www.figma.com/file/16DCGEgU1U6DArqH98I0Kv/DSF-x-Talend?node-id=1%3A1916",
+      "https://www.figma.com/file/16DCGEgU1U6DArqH98I0Kv/DSF-x-Talend?node-id=194%3A58",
   },
 };
+/*
+export default {
+  title: "Example/Hero",
+  component: Hero,
+  parameters: {
+    description: {
+      component:
+        "A large banner, usually appearing as one of the first items on a page; often contains a full-width image.",
+    },
+  },
+  args,
+  argTypes,
+};
+*/

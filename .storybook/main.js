@@ -8,4 +8,10 @@ module.exports = {
     "@storybook/addon-essentials",
     "storybook-addon-designs",
   ],
+  refs: {
+    "design-system": {
+      title: "Talend Design System",
+      url: "http://design.talend.com/",
+    },
+  },
 };

@@ -1,4 +1,6 @@
 import { ArgsTable, Canvas, Meta, Story } from "@storybook/addon-docs/blocks";
+import { Figma } from "storybook-addon-designs/blocks";
+
 import { Button } from "@talend/design-system";
 
 import { Content } from "./blocks";
@@ -15,17 +17,26 @@ A large banner, usually appearing as one of the first items on a page; often con
 
 ## Zoning
 
-<img src="https://s3-us-west-2.amazonaws.com/figma-alpha-api/img/9631/67c0/5ec7caec365196936f06fe9ac968024c" />
+<Figma
+  url="https://www.figma.com/file/16DCGEgU1U6DArqH98I0Kv/DSF-x-Talend?node-id=194%3A0"
+  collapsable={false}
+  showLink={false}
+  style={{ border: "none", boxShadow: "none" }}
+/>
 
 ## Style
 
 ### Default
+
+By default, the content is centered.
 
 <Canvas>
   <Story story={Stories.Default} />
 </Canvas>
 
 ### With image
+
+With an image the content is left aligned.
 
 <Canvas>
   <Story story={Stories.WithImage} />
@@ -57,39 +68,9 @@ N/A
   <Story
     name="Usage"
     args={Stories.Default.args}
-    argTypes={{
-      title: {
-        name: "Title",
-        description: "Title of the bannner",
-        control: { type: "text" },
-      },
-      description: {
-        name: "Description",
-        description: "Description of the banner",
-        control: { type: "text" },
-      },
-      secondary: {
-        name: "Secondary",
-        description: "Should display a secondary CTA",
-        control: { type: "text" },
-      },
-      primary: {
-        name: "Primary",
-        description: "Should display a primary CTA",
-        control: { type: "text" },
-      },
-      image: {
-        name: "Image",
-        description: `Image URL to display
-          <ul>
-            <li>${image}</li>
-            <li>https://media.giphy.com/media/TLqkzhMIZxAQg/giphy.gif</li>
-          </ul>`,
-        control: { type: "text" },
-      },
-    }}
+    argTypes={Stories.Default.argTypes}
   >
-    {Stories.Template.bind({})}
+    {Stories.Default.bind({})}
   </Story>
 </Canvas>
 
