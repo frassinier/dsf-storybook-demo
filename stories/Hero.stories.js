@@ -81,7 +81,7 @@ Default.parameters = {
 Default.argTypes = argTypes;
 
 export const WithImage = Default.bind({});
-WithImage.args = { ...args, secondary: "Free trial", image };
+WithImage.args = { ...Default.args, secondary: "Free trial", image };
 WithImage.parameters = {
   docs: {
     description: {
@@ -94,6 +94,7 @@ WithImage.parameters = {
       "https://www.figma.com/file/16DCGEgU1U6DArqH98I0Kv/DSF-x-Talend?node-id=194%3A58",
   },
 };
+
 /*
 export default {
   title: "Example/Hero",
