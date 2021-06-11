@@ -2207,10 +2207,10 @@
     resolve-from "^5.0.0"
     store2 "^2.12.0"
 
-"@talend/design-system@^1.2.2":
-  version "1.2.2"
-  resolved "https://registry.yarnpkg.com/@talend/design-system/-/design-system-1.2.2.tgz#131234dba9abc57d976d8ef3213fb93de0ce69cd"
-  integrity sha512-r4iM39xvpKD1dyZeBUrZUeNYyOekolcvwVz7cOzd/1W+R2IsXzvcToOWI7DDqmJJ+ljGwMS8y+iR1eO5cY40Uw==
+"@talend/design-system@1.2.3":
+  version "1.2.3"
+  resolved "https://registry.yarnpkg.com/@talend/design-system/-/design-system-1.2.3.tgz#cbd3c8724bf33116f8466e2c807b5f44602ae574"
+  integrity sha512-pdUPhzdE9H/vzqizjx0hEKYcgjA1i1/+6u6tEVJAkaKLhQm3yVvuqr49sAK/F00t29mQFd/1jkrkcmReNi/ZOw==
   dependencies:
     classnames "^2.2.6"
     i18next "^20.2.2"
