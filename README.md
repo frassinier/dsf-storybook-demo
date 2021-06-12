@@ -1,10 +1,12 @@
-# DSF-Storybook-demo
+# DSF Storybook Demo
 
 [Storybook](https://storybook.js.org/) demo for [Design System France](https://www.designsystems.fr/) using [Chromatic](https://www.chromatic.com/)
 
-## CLI history
+## Demo timeline
 
-### Init the project
+### Getting Started
+
+#### Init the project
 
 ```bash
 yarn init -y
@@ -16,7 +18,7 @@ git add .storybook stories package.json yarn.lock
 git commit -am 'chore: init'
 ```
 
-### Add dependencies
+#### Add dependencies
 
 ```
 yarn add react react-dom react-is styled-components reakit classnames @talend/design-system
@@ -26,6 +28,10 @@ git push
 ```
 
 ### Chromatic
+
+#### Create a project
+
+Go to [chromatic.com](https://www.chromatic.com/) and follow the instructions
 
 #### GitHub Action
 
@@ -55,7 +61,7 @@ jobs:
           projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
 ```
 
-Check the initialization on [chromatic.com](https://www.chromatic.com/)
+Check the results on [chromatic.com](https://www.chromatic.com/)
 
 ### Add storybook-addon-designs
 
@@ -379,6 +385,109 @@ export default {
 };
 ```
 
+### Use MDX format
+
+First, edit stories/Hero.stories.js
+
+```diff
+[...]
+
++/*
++export default {
++  title: "Example/Hero",
++  component: Hero,
++  parameters: {
++    description: {
++      component:
++        "A large banner, usually appearing as one of the first items on a page; often contains a full-width image.",
++    },
++  },
++  args,
++  argTypes,
++};
++*/
+```
+
+Add stories/Hero.stories.mdx
+
+```mdx
+import { ArgsTable, Canvas, Meta, Story } from "@storybook/addon-docs";
+import { Figma } from "storybook-addon-designs/blocks";
+
+import { Button } from "@talend/design-system";
+
+import * as Stories from "./Hero.stories";
+
+import image from "./assets/talend.svg";
+
+<Meta title="Example/Hero" />
+
+# Hero
+
+A large banner, usually appearing as one of the first items on a page; often contains a full-width image.
+
+## Zoning
+
+<Figma
+  url="https://www.figma.com/file/"
+  collapsable={false}
+  showLink={false}
+/>
+
+## Style
+
+### Default
+
+By default, the content is centered.
+
+<Canvas>
+  <Story story={Stories.Default} />
+</Canvas>
+
+### With image
+
+With an image the content is left aligned.
+
+<Canvas>
+  <Story story={Stories.WithImage} />
+</Canvas>
+
+## States
+
+N/A
+
+## Interactions
+
+N/A
+
+## Content
+
+- Use a compelling header that is in-brand and relevant to your most important content/action item.
+- Have clear call to action.
+- We recommend hero images at least 800px by 600px. A 16:9 aspect ratio works well though more of it can be hidden when the hero section is tall.
+- Choose your image wisely.
+- Don’t just repeat the site title in the header
+
+## Usage
+
+<Canvas>
+  <Story
+    name="Usage"
+    args={Stories.Default.args}
+    argTypes={Stories.Default.argTypes}
+  >
+    {Stories.Default.bind({})}
+  </Story>
+</Canvas>
+
+<ArgsTable story="Usage" />
+
+## Accessibility
+
+N/A
+
+```
+
 ### Add new Docs block
 
 Add stories/blocks/Content.js
@@ -449,7 +558,7 @@ export { Content };
 Edit stories/Hero.stories.mdx
 
 ```diff
-import { ArgsTable, Canvas, Meta, Story } from "@storybook/addon-docs/blocks";
+import { ArgsTable, Canvas, Meta, Story } from "@storybook/addon-docs";
 import { Figma } from "storybook-addon-designs/blocks";
 + import { Content } from "./blocks";
 
