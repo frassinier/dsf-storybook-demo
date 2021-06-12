@@ -77,7 +77,7 @@ module.exports = {
 };
 ```
 
-### Add Design System Storybook
+### Add Design System Storybook ref
 
 https://storybook.js.org/docs/react/workflows/storybook-composition
 
@@ -117,7 +117,7 @@ Edit package.json
 }
 ```
 
-### Show all stories by default
+### Show all stories source by default
 
 Edit .storybook/preview.js
 
@@ -172,7 +172,7 @@ export const parameters = {
 +];
 ```
 
-### Create a new Component Alias
+### Create a new Component alias
 
 Add stories/ButtonAsLink.js
 
@@ -204,6 +204,178 @@ export const ButtonAsLink = ({ variant, ...rest }) => {
       break;
   }
   return <Component as={A} {...rest} />;
+};
+```
+
+### Add a new Hero Component
+
+Add stories/blocks/Hero.js
+
+```jsx
+import React from "react";
+import styled from "styled-components";
+
+import { tokens } from "@talend/design-system";
+
+const Container = styled.header`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-block: ${tokens.space.xl};
+  min-height: 40rem;
+  width: 100%;
+  text-align: center;
+`;
+
+const ContainerItem = styled.div`
+  flex-basis: 50%;
+  padding-inline: ${tokens.space.xl};
+`;
+
+const Text = styled(ContainerItem)`
+  text-align: start;
+`;
+
+const Image = styled(ContainerItem)`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
+const ContainerWithImage = styled(Container)`
+  flex-direction: row;
+`;
+
+export const Hero = (props) => {
+  if (props.image) {
+    const { image, children, ...rest } = props;
+    return (
+      <ContainerWithImage {...rest}>
+        <Text>{children}</Text>
+        <Image>
+          <img src={image} alt="" />
+        </Image>
+      </ContainerWithImage>
+    );
+  }
+  return <Container {...props} />;
+};
+```
+
+### Add Hero stories
+
+Add stories/Hero.stories.js
+
+```jsx
+import React from "react";
+
+import { ButtonAsLink } from "./ButtonAsLink";
+import { Hero } from "./Hero";
+
+import image from "./assets/talend.svg";
+
+const argTypes = {
+  title: {
+    name: "Title",
+    description: "Title of the bannner",
+    control: { type: "text" },
+  },
+  description: {
+    name: "Description",
+    description: "Description of the banner",
+    control: { type: "text" },
+  },
+  secondary: {
+    name: "Secondary",
+    description: "Secondary CTA",
+    control: { type: "text" },
+  },
+  primary: {
+    name: "Primary",
+    description: "Primary CTA",
+    control: { type: "text" },
+  },
+  image: {
+    name: "Image",
+    description: `Image URL to display
+        <code>/${image}</code>
+        <code>//media.giphy.com/media/TLqkzhMIZxAQg/giphy.gif</code>
+        `,
+    control: { type: "text" },
+  },
+};
+
+const args = {
+  title: "Connect your data in the cloud",
+  description:
+    "Need superior analytics for important decisions? Talend brings it all together with support for any cloud data warehouse.",
+  primary: "Contact us",
+};
+
+export const Default = ({
+  title,
+  description,
+  secondary,
+  primary,
+  ...rest
+}) => (
+  <Hero {...rest}>
+    {title && <h1>{title}</h1>}
+    {description && <p>{description}</p>}
+    {secondary && (
+      <ButtonAsLink variant="secondary" href="#">
+        {secondary}
+      </ButtonAsLink>
+    )}
+    {primary && (
+      <ButtonAsLink variant="primary" href="#">
+        {primary}
+      </ButtonAsLink>
+    )}
+  </Hero>
+);
+Default.args = args;
+Default.parameters = {
+  docs: {
+    description: {
+      story: "By default, the content is centered.",
+    },
+  },
+  design: {
+    type: "figma",
+    url:
+      "https://www.figma.com/file/",
+  },
+};
+Default.argTypes = argTypes;
+
+export const WithImage = Default.bind({});
+WithImage.args = { ...Default.args, secondary: "Free trial", image };
+WithImage.parameters = {
+  docs: {
+    description: {
+      story: "With an image the content is left aligned.",
+    },
+  },
+  design: {
+    type: "figma",
+    url:
+      "https://www.figma.com/file/",
+  },
+};
+
+export default {
+  title: "Example/Hero",
+  component: Hero,
+  parameters: {
+    description: {
+      component:
+        "A large banner, usually appearing as one of the first items on a page; often contains a full-width image.",
+    },
+  },
+  args,
+  argTypes,
 };
 ```
 
