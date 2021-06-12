@@ -115,6 +115,7 @@ Edit package.json
     "build-storybook": "build-storybook"
   }
 }
+```
 
 ### Show all stories by default
 
@@ -169,4 +170,134 @@ export const parameters = {
 +    );
 +  },
 +];
+```
+
+### Create a new Component Alias
+
+Add stories/ButtonAsLink.js
+
+```jsx
+import React from "react";
+import styled from "styled-components";
+
+import { tokens, Button } from "@talend/design-system";
+
+const A = styled.a`
+  margin-block: ${tokens.space.m};
+
+  & + & {
+    margin-left: ${tokens.space.m};
+  }
+`;
+
+export const ButtonAsLink = ({ variant, ...rest }) => {
+  let Component;
+  switch (variant) {
+    case "primary":
+      Component = Button.Primary;
+      break;
+    case "secondary":
+      Component = Button.Secondary;
+      break;
+    default:
+      Component = Button;
+      break;
+  }
+  return <Component as={A} {...rest} />;
+};
+```
+
+### Add new Docs block
+
+Add stories/blocks/Content.js
+
+```jsx
+import React from "react";
+import styled from "styled-components";
+
+const Content = styled.div`
+  display: grid;
+  grid-gap: 10px;
+  grid-template-columns: repeat(2, 1fr);
+  grid-auto-rows: minmax(100px, auto);
+`;
+
+const Usage = styled.ul.attrs({
+  role: "list",
+})`
+  padding: 1rem;
+  border-radius: 0.4rem;
+  background: #e9f5fb;
+  box-shadow: 0px -5px 0px 0px currentColor;
+
+  li {
+    color: black;
+
+    &:before {
+      content: "—";
+      padding: 1ch;
+    }
+  }
+`;
+
+const Do = styled(Usage)`
+  color: #9bca67;
+`;
+
+const Dont = styled(Usage)`
+  color: #ff8a8c;
+`;
+
+const Block = (props) => (
+  <Content>
+    <Do>
+      {props.do.map((item, key) => (
+        <li key={key}>{item}</li>
+      ))}
+    </Do>
+    <Dont>
+      {props.dont.map((item, key) => (
+        <li key={key}>{item}</li>
+      ))}
+    </Dont>
+  </Content>
+);
+
+export default Block;
+```
+
+Add stories/blocks/index.js
+
+```jsx
+import Content from "./Content.js";
+
+export { Content };
+```
+
+Edit stories/Hero.stories.mdx
+
+```diff
+import { ArgsTable, Canvas, Meta, Story } from "@storybook/addon-docs/blocks";
+import { Figma } from "storybook-addon-designs/blocks";
++ import { Content } from "./blocks";
+
+[...]
+
+## Content
+
+-* Use a compelling header that is in-brand and relevant to your most important content/action item.
+-* Have clear call to action.
+-* We recommend hero images at least 800px by 600px. A 16:9 aspect ratio works well though more of it can be hidden when the hero section is tall.
+-* Choose your image wisely.
+-* Don’t just repeat the site title in the header
++<Content
++  do={[
++    "Use a compelling header that is in-brand and relevant to your most important content/action item.",
++    "Have clear call to action.",
++    "We recommend hero images at least 800px by 600px. A 16:9 aspect ratio works well though more of it can be hidden when the hero section is tall.",
++    "Choose your image wisely.",
++  ]}
++  dont={["Don’t just repeat the site title in the header"]}
++/>
+
 ```
