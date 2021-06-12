@@ -27,6 +27,34 @@ git push
 
 ### Chromatic
 
+#### GitHub Action
+
+```yaml
+name: Chromatic
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - name: Install dependencies
+        run: yarn
+      - name: Publish to Chromatic
+        uses: chromaui/action@v1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
+```
+
 Check the initialization on [chromatic.com](https://www.chromatic.com/)
 
 ### Add storybook-addon-designs
