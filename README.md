@@ -488,6 +488,30 @@ N/A
 
 ```
 
+### Second iteration
+
+Edit stories/Hero.js
+
+```diff
+[...]
+
+const Container = styled.header`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-block: ${tokens.space.xl};
+  min-height: 40rem;
+  width: 100%;
+  text-align: center;
++  background: ${tokens.colors.cottonCandy.backgroundImage};
+`;
+
+[...]
+```
+
+Commit, Push and check the result on Chromatic!
+
 ### Add new Docs block
 
 Add stories/blocks/Content.js
@@ -581,4 +605,10 @@ import { Figma } from "storybook-addon-designs/blocks";
 +  dont={["Don’t just repeat the site title in the header"]}
 +/>
 
+```
+
+### Verify Docs mode
+
+```bash
+yarn storybook:docs
 ```
