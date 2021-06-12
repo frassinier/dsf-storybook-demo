@@ -4,18 +4,141 @@
 
 ## CLI history
 
+### Init the project
+
 ```bash
 yarn init -y
 yarn add react react-dom
 npx sb init
+npx sb@next upgrade --prerelease
 
 git add .storybook stories package.json yarn.lock
 git commit -am 'chore: init'
-git push
-
-yarn add -D chromatic
 ```
 
-## Chromatic
+### Add dependencies
 
-https://www.chromatic.com/builds?appId=60b49caef5f1c000394e25bf
+```
+yarn add react react-dom react-is styled-components reakit classnames @talend/design-system
+yarn add -D chromatic storybook-addon-designs
+git commit -am 'chore: add dependencies'
+git push
+```
+
+### Chromatic
+
+Check the initialization on [chromatic.com](https://www.chromatic.com/)
+
+### Add storybook-addon-designs
+
+Following the documentation here https://github.com/pocka/storybook-addon-designs
+
+Edit .storybook/main.js
+
+```diff
+module.exports = {
+  stories: [
+    "../stories/**/*.stories.mdx",
+    "../stories/**/*.stories.@(js|jsx|ts|tsx)",
+  ],
+  addons: [
+    "@storybook/addon-links",
+    "@storybook/addon-essentials",
++    "storybook-addon-designs",
+  ],
+};
+```
+
+### Add Design System Storybook
+
+https://storybook.js.org/docs/react/workflows/storybook-composition
+
+Edit .storybook/main.js
+
+```diff
+module.exports = {
+  stories: [
+    "../stories/**/*.stories.mdx",
+    "../stories/**/*.stories.@(js|jsx|ts|tsx)",
+  ],
+  addons: [
+    "@storybook/addon-links",
+    "@storybook/addon-essentials",
+    "storybook-addon-designs",
+  ],
++  refs: {
++    "design-system": {
++      title: "Talend Design System",
++      url: "https://design.talend.com/",
++    },
++  },
+};
+```
+
+### Add Storybook Docs mode
+
+Edit package.json
+
+```diff  
+  ...
+  "scripts": {
+    "storybook": "start-storybook -p 6006",
++    "storybook:docs": "yarn storybook --docs",
+    "build-storybook": "build-storybook"
+  }
+}
+
+### Show all stories by default
+
+Edit .storybook/preview.js
+
+```diff
+export const parameters = {
+  actions: { argTypesRegex: "^on[A-Z].*" },
+  controls: {
+    matchers: {
+      color: /(background|color)$/i,
+      date: /Date$/,
+    },
+  },
++  docs: {
++    source: {
++      state: "open",
++    },
++  },
+};
+```
+
+### Add Talend Design System Theme Provider
+
+Edit .storybook/preview.js
+
+```diff
++import { ThemeProvider } from "@talend/design-system";
+
+export const parameters = {
+  actions: { argTypesRegex: "^on[A-Z].*" },
+  controls: {
+    matchers: {
+      color: /(background|color)$/i,
+      date: /Date$/,
+    },
+  },
+  docs: {
+    source: {
+      state: "open",
+    },
+  },
+};
+
++export const decorators = [
++  (Story, context) => {
++    return (
++      <ThemeProvider>
++        <ThemeProvider.GlobalStyle />
++        <Story {...context} />
++      </ThemeProvider>
++    );
++  },
++];
+```
