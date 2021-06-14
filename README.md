@@ -27,13 +27,13 @@ git commit -am 'chore: add dependencies'
 git push
 ```
 
-### Chromatic setup
+#### Chromatic setup
 
-#### Create a project
+##### Create a project
 
 Go to [chromatic.com](https://www.chromatic.com/) and follow the instructions
 
-#### GitHub Action
+##### GitHub Action
 
 ```yaml
 name: Chromatic
@@ -63,7 +63,7 @@ jobs:
 
 Check the results on [chromatic.com](https://www.chromatic.com/)
 
-### Add storybook-addon-designs
+#### Add storybook-addon-designs
 
 Following the documentation here https://github.com/pocka/storybook-addon-designs
 
@@ -83,7 +83,7 @@ module.exports = {
 };
 ```
 
-### Add Talend Design System Storybook ref
+#### Add Talend Design System Storybook ref
 
 https://storybook.js.org/docs/react/workflows/storybook-composition
 
@@ -109,7 +109,7 @@ module.exports = {
 };
 ```
 
-### Add Storybook Docs mode
+#### Add Storybook Docs mode
 
 Edit package.json
 
@@ -123,7 +123,7 @@ Edit package.json
 }
 ```
 
-### Show all stories source by default
+#### Show all stories source by default
 
 Edit .storybook/preview.js
 
@@ -144,7 +144,7 @@ export const parameters = {
 };
 ```
 
-### Add Talend Design System Theme Provider
+#### Add Talend Design System Theme Provider
 
 Edit .storybook/preview.js
 
@@ -178,7 +178,7 @@ export const parameters = {
 +];
 ```
 
-### Create a new Component alias
+#### Create a new Component alias
 
 Add stories/ButtonAsLink.js
 
