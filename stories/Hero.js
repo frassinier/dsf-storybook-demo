@@ -12,6 +12,7 @@ const Container = styled.header`
   min-height: 40rem;
   width: 100%;
   text-align: center;
+  background: ${tokens.colors.cottonCandy};
 `;
 
 const ContainerItem = styled.div`

@@ -1,5 +1,6 @@
 import { ArgsTable, Canvas, Meta, Story } from "@storybook/addon-docs";
 import { Figma } from "storybook-addon-designs/blocks";
+import { Content } from "./blocks";
 
 import { Button } from "@talend/design-system";
 
@@ -49,11 +50,15 @@ N/A
 
 ## Content
 
-- Use a compelling header that is in-brand and relevant to your most important content/action item.
-- Have clear call to action.
-- We recommend hero images at least 800px by 600px. A 16:9 aspect ratio works well though more of it can be hidden when the hero section is tall.
-- Choose your image wisely.
-- Don’t just repeat the site title in the header
+<Content
+  do={[
+    "Use a compelling header that is in-brand and relevant to your most important content/action item.",
+    "Have clear call to action.",
+    "We recommend hero images at least 800px by 600px. A 16:9 aspect ratio works well though more of it can be hidden when the hero section is tall.",
+    "Choose your image wisely.",
+  ]}
+  dont={["Don’t just repeat the site title in the header"]}
+/>
 
 ## Usage
 
