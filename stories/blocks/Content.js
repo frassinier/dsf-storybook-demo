@@ -3,9 +3,9 @@ import styled from "styled-components";
 
 const Content = styled.div`
   display: grid;
-  grid-gap: 10px;
+  grid-gap: 1rem;
   grid-template-columns: repeat(2, 1fr);
-  grid-auto-rows: minmax(100px, auto);
+  grid-auto-rows: minmax(10rem, auto);
 `;
 
 const Usage = styled.ul.attrs({
