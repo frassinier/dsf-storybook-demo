@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 
 import { Header } from "./Header";
+import { Hero } from "./Hero";
 import "./page.css";
 
 export const Page = ({ user, onLogin, onLogout, onCreateAccount }) => (
@@ -12,6 +13,13 @@ export const Page = ({ user, onLogin, onLogout, onCreateAccount }) => (
       onLogout={onLogout}
       onCreateAccount={onCreateAccount}
     />
+    <Hero>
+      <h1>Lorem ipsum</h1>
+      <p>
+        Render pages with mock data. This makes it easy to build and review page
+        states without needing to navigate to them in your app.{" "}
+      </p>
+    </Hero>
     <section>
       <h2>Pages in Storybook</h2>
       <p>
