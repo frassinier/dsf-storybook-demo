@@ -11,7 +11,7 @@ module.exports = {
   refs: {
     "design-system": {
       title: "Talend Design System",
-      url: "http://design.talend.com/",
+      url: "https://design.talend.com/",
     },
   },
 };
