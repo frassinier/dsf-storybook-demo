@@ -721,5 +721,5 @@ import { Figma } from "storybook-addon-designs/blocks";
 ### Verify Docs mode
 
 ```bash
-yarn storybook:docs
+rm -rf node_modules/.cache && yarn storybook:docs
 ```
