@@ -27,7 +27,7 @@ git commit -am 'chore: add dependencies'
 git push
 ```
 
-### Chromatic
+### Chromatic setup
 
 #### Create a project
 
@@ -83,7 +83,7 @@ module.exports = {
 };
 ```
 
-### Add Design System Storybook ref
+### Add Talend Design System Storybook ref
 
 https://storybook.js.org/docs/react/workflows/storybook-composition
 
@@ -213,7 +213,9 @@ export const ButtonAsLink = ({ variant, ...rest }) => {
 };
 ```
 
-### Add a new Hero Component
+### First round
+
+#### Add a new Hero Component
 
 Add stories/blocks/Hero.js
 
@@ -269,7 +271,7 @@ export const Hero = (props) => {
 };
 ```
 
-### Add Hero stories
+#### Add Hero stories
 
 Add stories/Hero.stories.js
 
@@ -385,7 +387,7 @@ export default {
 };
 ```
 
-### Use MDX format
+#### Use MDX format
 
 First, edit stories/Hero.stories.js
 
@@ -512,7 +514,7 @@ const Container = styled.header`
 
 Commit, Push and check the result on Chromatic!
 
-### Add new Docs block
+#### Add new Docs block
 
 Add stories/blocks/Content.js
 
