@@ -217,7 +217,81 @@ export const ButtonAsLink = ({ variant, ...rest }) => {
 
 #### Add a new Hero Component
 
-Add stories/blocks/Hero.js
+Add stories/Hero.js
+
+```jsx
+import React from "react";
+
+export const Hero = props => <div {...props} />
+```
+
+#### Add Hero stories
+
+Add stories/Hero.stories.js
+
+```jsx
+import React from "react";
+
+import { ButtonAsLink } from "./ButtonAsLink";
+import { Hero } from "./Hero";
+
+const args = {
+  title: "Connect your data in the cloud",
+  description:
+    "Need superior analytics for important decisions? Talend brings it all together with support for any cloud data warehouse.",
+  primary: "Contact us",
+};
+
+export const Default = ({
+  title,
+  description,
+  secondary,
+  primary,
+  ...rest
+}) => (
+  <Hero {...rest}>
+    {title && <h1>{title}</h1>}
+    {description && <p>{description}</p>}
+    {secondary && (
+      <ButtonAsLink variant="secondary" href="#">
+        {secondary}
+      </ButtonAsLink>
+    )}
+    {primary && (
+      <ButtonAsLink variant="primary" href="#">
+        {primary}
+      </ButtonAsLink>
+    )}
+  </Hero>
+);
+Default.args = args;
+Default.parameters = {
+  design: {
+    type: "figma",
+    url:
+      "https://www.figma.com/file/",
+  },
+};
+
+export const WithImage = Default.bind({});
+WithImage.parameters = {
+  design: {
+    type: "figma",
+    url:
+      "https://www.figma.com/file/",
+  },
+};
+
+export default {
+  title: "Example/Hero",
+  component: Hero,
+  args,
+};
+```
+
+#### Edit Hero Component
+
+Replace stories/Hero.js content
 
 ```jsx
 import React from "react";
@@ -271,9 +345,9 @@ export const Hero = (props) => {
 };
 ```
 
-#### Add Hero stories
+#### Customize Hero stories
 
-Add stories/Hero.stories.js
+Replace stories/Hero.stories.js content
 
 ```jsx
 import React from "react";
@@ -519,6 +593,7 @@ export const Page = ({ user, onLogin, onLogout, onCreateAccount }) => (
 +        Request a demo
 +      </ButtonAsLink>
 +    </Hero>
+
 [...]
 ```
 
