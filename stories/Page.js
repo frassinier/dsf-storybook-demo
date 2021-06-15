@@ -1,9 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-import { ButtonAsLink } from "./ButtonAsLink";
 import { Header } from "./Header";
-import { Hero } from "./Hero";
 import "./page.css";
 
 export const Page = ({ user, onLogin, onLogout, onCreateAccount }) => (
@@ -14,16 +12,6 @@ export const Page = ({ user, onLogin, onLogout, onCreateAccount }) => (
       onLogout={onLogout}
       onCreateAccount={onCreateAccount}
     />
-    <Hero image="https://www.talend.com/wp-content/uploads/2020/10/spot-lp-trial-contact-demo.png">
-      <h1>Book a Demo with one of our experts</h1>
-      <p>
-        Let us walk you through how Talend can help you get clean, compliant,
-        and complete data for everyone in your business.
-      </p>
-      <ButtonAsLink variant="primary" href="#">
-        Request a demo
-      </ButtonAsLink>
-    </Hero>
     <section>
       <h2>Pages in Storybook</h2>
       <p>
