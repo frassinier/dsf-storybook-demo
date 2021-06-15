@@ -12,6 +12,7 @@ const Container = styled.header`
   min-height: 40rem;
   width: 100%;
   text-align: center;
+  background: ${tokens.colors.cottonCandy};
 `;
 
 const ContainerItem = styled.div`
@@ -31,6 +32,18 @@ const Image = styled(ContainerItem)`
 
 const ContainerWithImage = styled(Container)`
   flex-direction: row;
+
+  @media screen and (max-width: ${tokens.breakpoints.s}) {
+    flex-direction: column-reverse;
+
+    ${Text} {
+      text-align: center;
+    }
+
+    ${Image} {
+      padding-block: ${tokens.space.xl};
+    }
+  }
 `;
 
 export const Hero = (props) => {
